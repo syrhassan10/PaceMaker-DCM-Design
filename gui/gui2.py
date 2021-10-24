@@ -194,7 +194,7 @@ def getdetails(username, password):
     reg_status =1
     messags_status.set("successfully signed up")
     root.destroy()
-
+    programmable()
 
 
 def checkdetails(username, password):
