@@ -11,8 +11,8 @@ root = tk.Tk()
 root.title("Main Page")
 root.geometry('1000x700')
 
-s = serial.Serial("COM6", 115200) #baudrate thats controls the controller (different pacemakers have their own unique baudrate)
-x = s.read()          # read one byte (another way to make a pacermaker unique)
+#s = serial.Serial("COM6", 115200) #baudrate thats controls the controller (different pacemakers have their own unique baudrate)
+#x = s.read()          # read one byte (another way to make a pacermaker unique)
 
 
 # Import the tcl file
