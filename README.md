@@ -24,16 +24,17 @@ This module only executes one function which is called initial_screen()  which i
 | def set_communication()                             | Public         |                                                              | Checks serial communication port at 'COMX' and reads a byte of code to recognizes unique pacemaker controllers. |
 | def getdetails(username, password, retypedpassword) | Public         | returns 1 if successful and 0 if registration fails.         | gets called when the 'New Account' Button is pressed. Open file 'User_data.txt' to first check if username already exists within the file. If it does have that name the messags_status global variable updates to the corresponding message. If it does not exist it checks if the user limit num_users global variable is over 10 and updates messags_status accordingly. Which then finally writes to the file the user data if password and retypedpassword match. Closes file at the end. |
 | def checkdetails()                                  | Public         | returns 1 if successfully logs in and 0 if wrong username or password. | gets called when the 'Log in' Button is pressed. Open file 'User_data.txt' to first check if username exists within the file. If it does not have that name the login_status global variable updates to the corresponding message. Then it checks if the password matches the username that exists and will update the login_status global variable to the corresponding message (whether the password is correct or not) |
-| def register_new_user()                             | Public         |                                                              |                                                              |
-| def intial_screen()                                 | Public         |                                                              |                                                              |
+| def register_new_user()                             | Public         |                                                              | This function is called when the user would like to create a new account and is called from the initial_screen() function's Button 'b_new_acc' this function creates three entries, username password retyped password and a 'Register' Button to create a new account. This window also contains multiple message labels for login and register status if any errors in logging in or registering arises. |
+| def intial_screen()                                 | Public         |                                                              | The only function that is called by this module and is a bridge to other functions/features for this module. It initially Instantiates two entries, username and password and a login button below these entries to access a user's programmable parameters. It also instantiates a 'New Account Button' which, if pressed, calls register_new_user() function. |
 
 
 
-| UI Button | Called Function |
-| --------- | --------------- |
-|           |                 |
-|           |                 |
-|           |                 |
+| UI Button  | Called Function                                          |
+| ---------- | -------------------------------------------------------- |
+| b_register | getdetails(dirname.get(), dirpass.get(), dirname3.get()) |
+| b_login    | checkdetails(entry1.get(), entry2.get())                 |
+| b_new_acc  | register_new_user()                                      |
+| b_comm     | set_communication(b_comm)                                |
 
 * Module Secret: LRL array and pulse_width_values which stores the possible allowed values for the entry to accept.
 * Module Secret: We applied a theme we found on Github [here](https://github.com/rdbende/Forest-ttk-theme) which writes over the default tkinter theme.
