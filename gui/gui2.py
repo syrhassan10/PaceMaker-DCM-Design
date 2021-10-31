@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import *
 import datetime
-import serial
+
 
 from PIL import Image, ImageTk
 import tkinter.font as tkFont
@@ -11,9 +11,8 @@ root = tk.Tk()
 root.title("Main Page")
 root.geometry('1000x700')
 
-
-s = serial.Serial("COM6", 115200) #baudrate thats controls the controller
-x = s.read()          # read one byte (another way to make a pacermaker unique)
+#s = serial.Serial("COM6", 115200) #baudrate thats controls the controller
+#x = s.read()          # read one byte (another way to make a pacermaker unique)
 
 
 # Import the tcl file
@@ -31,7 +30,7 @@ LRL_values = [30, 35, 40, 45, 50, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61
               125, 130, 135, 140, 145, 150, 155, 160, 165, 170, 175]
 pulse_width_values = [0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8,
                       1.9]
-
+amp_values = [0, 1.25, 2.5, 3.75, 5]
 
 def programmable():
     window = tk.Tk()
@@ -76,7 +75,7 @@ def programmable():
     ttk.Label(my_frame1, text="Atrial Amplitude (V) :",
               font=("DevaJu Serif", 10)).grid(column=0,
                                               row=10, padx=10, pady=25)
-    AA = ttk.Spinbox(my_frame1, from_=0, to=5, wrap=1)
+    AA = ttk.Spinbox(my_frame1,values=amp_values, wrap=1)
     AA.grid(column=1, row=10, padx=10, pady=25)
     AA.insert(0, 3.75)
 
@@ -106,7 +105,7 @@ def programmable():
     ttk.Label(my_frame3, text="Atrial Amplitude (V) :",
               font=("DevaJu Serif", 10)).grid(column=0,
                                               row=10, padx=10, pady=25)
-    AA = ttk.Spinbox(my_frame3, from_=0, to=5, wrap=1)
+    AA = ttk.Spinbox(my_frame3, values=amp_values, wrap=1)
     AA.grid(column=1, row=10, padx=10, pady=25)
     AA.insert(0, 3.75)
 
@@ -143,7 +142,7 @@ def programmable():
     ttk.Label(my_frame2, text="Ventricular Amplitude (V) :",
               font=("DevaJu Serif", 10)).grid(column=0,
                                               row=10, padx=10, pady=25)
-    VA = ttk.Spinbox(my_frame2, from_=0, to=5, wrap=1)
+    VA = ttk.Spinbox(my_frame2, values=amp_values, wrap=1)
     VA.grid(column=1, row=10, padx=10, pady=25)
     VA.insert(0, 3.75)
 
@@ -172,7 +171,7 @@ def programmable():
     ttk.Label(my_frame4, text="Ventricular Amplitude (V) :",
               font=("DevaJu Serif", 10)).grid(column=0,
                                               row=10, padx=10, pady=25)
-    VA = ttk.Spinbox(my_frame4, from_=0, to=5, wrap=1)
+    VA = ttk.Spinbox(my_frame4, values=amp_values, wrap=1)
     VA.grid(column=1, row=10, padx=10, pady=25)
     VA.insert(0, 3.75)
 
